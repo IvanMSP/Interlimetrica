@@ -7,7 +7,9 @@ from reusable.constants import BLANK, REQUIRED
 
 
 class Restaurant(models.Model):
-    raiting = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)], default=0)
+    """
+        Restaurant Model
+    """
     name = models.CharField(max_length=150, **REQUIRED)
     site = models.URLField()
     email = models.EmailField()
@@ -17,6 +19,11 @@ class Restaurant(models.Model):
     state = models.CharField(max_length=150, **BLANK)
     lat = models.DecimalField(max_digits=18, decimal_places=13)
     lng = models.DecimalField(max_digits=18, decimal_places=13)
+    raiting = models.PositiveSmallIntegerField(
+        default=0,
+        validators=[MinValueValidator(1), 
+                        MaxValueValidator(4)]
+    )
 
     def __str__(self):
         return self.name
