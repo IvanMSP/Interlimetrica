@@ -29,7 +29,7 @@ THIRDY_APPS = [
 ]
 
 OWNER_APPS = [
-
+    'restaurants.apps.RestaurantsConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRDY_APPS + OWNER_APPS
