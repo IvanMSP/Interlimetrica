@@ -1,3 +1,9 @@
+# Django Core
 from django.contrib import admin
+# Owner
+from .models import Restaurant
 
-# Register your models here.
+
+@admin.register(Restaurant)
+class AdminRestaurant(admin.ModelAdmin):
+    pass
