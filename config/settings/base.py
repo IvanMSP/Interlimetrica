@@ -25,7 +25,7 @@ DJANGO_APPS = [
 ]
 
 THIRDY_APPS = [
-
+    'import_export',
 ]
 
 OWNER_APPS = [
