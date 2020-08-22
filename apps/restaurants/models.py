@@ -1,8 +1,8 @@
 # Django Core
 import uuid
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from django.contrib.gis.db import models
+from django.contrib.gis.geos import fromstr
 # Owner
 from reusable.constants import BLANK, REQUIRED
 
@@ -25,6 +25,11 @@ class Restaurant(models.Model):
     state = models.CharField(max_length=150, **BLANK)
     lat = models.DecimalField(max_digits=18, decimal_places=13)
     lng = models.DecimalField(max_digits=18, decimal_places=13)
-    
+    location = models.PointField(**BLANK)
+
+    def save(self, *args, **kwargs):
+        self.location = fromstr(f'POINT({self.lng} {self.lat})', srid=4326)
+        super(Restaurant, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name
