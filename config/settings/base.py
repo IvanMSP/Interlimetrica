@@ -26,6 +26,8 @@ DJANGO_APPS = [
 
 THIRDY_APPS = [
     'import_export',
+    'django.contrib.gis',
+    'rest_framework',
 ]
 
 OWNER_APPS = [
